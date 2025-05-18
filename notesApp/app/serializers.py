@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User,Note
 from django.contrib.auth.password_validation import validate_password
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -16,3 +16,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             password=validated_data['password']
         )
         return user
+
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = '__all__'
+        read_only_fields = ['id', 'user', 'last_update', 'created_on']
