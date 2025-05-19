@@ -1,0 +1,67 @@
+# Notes Taking App Backend (Django)
+
+## Overview
+
+This is the backend API for a notes-taking application built with Django and JWT authentication.
+
+## Tech Stack
+
+- Python 3.x
+- Django (backend framework)
+- MySQL or MongoDB (database)
+- JWT (authentication)
+- Docker (containerization)
+- Django REST Framework
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```bash/cmd``
+   git clone <your-private-repo>
+   cd <project-folder>
+
+2. Set up virtual environment:
+   ```bash/cmd``
+
+    python -m venv venv
+    source venv/bin/activate
+
+3. Install dependencies:
+   ```bash/cmd``
+    pip install -r requirements.txt
+
+4. Set up .env:
+   ```bash/cmd``
+    SECRET_KEY=your_secret_key
+    DEBUG=True
+    DB_NAME=notes_db
+    DB_USER=root
+    DB_PASSWORD=your_password
+
+5. Run migrations:
+   ```bash/cmd``
+    python manage.py migrate
+
+6. Run server:
+   ```bash/cmd``
+    python manage.py runserver
+
+7. Performance Testing:
+   ```bash/cmd``
+   locust -f locustfile.py --host=http://localhost:8000
+   Run symanteneously
+
+###  Performance Test (Locust)
+
+Response time percentiles (approximated)
+Type     Name                                                          50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+POST     /api/user/login/                                             2900   2900   2900   2900   2900   2900   2900   2900   2900   2900   2900      1
+GET      /api/user/notes/                                               13     13     20     20     27   2100   2100   2100   2100   2100   2100     11
+POST     /api/user/notes/                                              110    170    340    340   2300   2300   2300   2300   2300   2300   2300      7
+PUT      /api/user/notes/3/                                            150    150    150    150    150    150    150    150    150    150    150      1
+DELETE   /api/user/notes/4/                                            160    160    160    160    160    160    160    160    160    160    160      1
+DELETE   /api/user/notes/5/                                            110    110    110    110    110    110    110    110    110    110    110      1
+DELETE   /api/user/notes/9/                                             42     42     42     42     42     42     42     42     42     42     42      1
+--------|--------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                     53    110    160    170   2100   2300   2900   2900   2900   2900   2900     23
