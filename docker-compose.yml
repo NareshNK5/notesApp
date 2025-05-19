@@ -1,0 +1,34 @@
+services:
+  notesapp: 
+    build: ./notesApp
+    volumes:
+      - ./notesApp:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  client:
+    build: ./client
+    ports:
+      - "5173:5173"
+    depends_on:
+      - notesapp
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: notesdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ''
+      MYSQL_ROOT_PASSWORD: ''
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

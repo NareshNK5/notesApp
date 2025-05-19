@@ -1,0 +1,145 @@
+# Notes Taking App Backend (Django)
+
+## Overview
+
+This is the backend API for a full-stack Notes Taking Application built with **Django (DRF)** and secured using **JWT Authentication**. The frontend is developed using **React.js with Vite**.
+
+---
+
+## Tech Stack
+
+### Backend
+
+* **Python 3.x**
+* **Django** – Web framework
+* **Django REST Framework** – For building REST APIs
+* **MySQL** (or MongoDB) – Database
+* **JWT** – Authentication
+* **Docker** – Containerization (optional)
+* **Locust** – For performance testing
+
+### Frontend
+
+* **React.js**
+* **Vite** – Fast build tool for React
+
+---
+
+## Setup Instructions
+
+### Backend Setup (Django)
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <your-private-repo>
+   cd <project-folder>
+   ```
+
+2. **Create and activate virtual environment**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up `.env` file**
+   Create a `.env` file with the following content:
+
+   ```env
+   SECRET_KEY=your_secret_key
+   DEBUG=True
+   DB_NAME=notes_db
+   DB_USER=root
+   DB_PASSWORD=your_password
+   ```
+
+5. **Apply migrations**
+
+   ```bash
+   python manage.py migrate
+   ```
+
+6. **Run development server**
+
+   ```bash
+   python manage.py runserver
+   ```
+
+---
+
+### Frontend Setup (React with Vite)
+
+1. **Navigate to the frontend directory (or create one)**
+
+   ```bash
+   cd frontend
+   ```
+
+2. **Initialize Vite project (if not done yet)**
+
+   ```bash
+   npm create vite@latest
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Start frontend server**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Configure proxy for API requests in `vite.config.js`:**
+
+   ```js
+   server: {
+     proxy: {
+       '/api': 'http://localhost:8000'
+     }
+   }
+   ```
+
+---
+
+## Performance Testing with Locust
+
+To run performance tests with Locust:
+
+1. Ensure backend is running at `http://localhost:8000`.
+2. Run:
+
+   ```bash
+   locust -f locustfile.py --host=http://localhost:8000
+   ```
+
+### Sample Results
+
+| Method | Endpoint                | 50%  | 75%  | 90%  | Max (ms) |
+| ------ | ----------------------- | ---- | ---- | ---- | -------- |
+| GET    | `/api/user/notes/`      | 13   | 20   | 27   | 2100     |
+| POST   | `/api/user/notes/`      | 110  | 340  | 2300 | 2300     |
+| PUT    | `/api/user/notes/<id>/` | 150  | 150  | 150  | 150      |
+| DELETE | `/api/user/notes/<id>/` | 42   | 160  | 160  | 160      |
+| POST   | `/api/user/login/`      | 2900 | 2900 | 2900 | 2900     |
+
+---
+
+Let me know if you’d like to:
+
+* Auto-deploy both frontend & backend using Docker
+* Add authentication to the React app using JWT
+* Create a downloadable Postman collection for API testing
+* Add CI/CD pipeline documentation
+
+Want a complete **architecture diagram** too?
