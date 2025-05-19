@@ -133,13 +133,3 @@ To run performance tests with Locust:
 | DELETE | `/api/user/notes/<id>/` | 42   | 160  | 160  | 160      |
 | POST   | `/api/user/login/`      | 2900 | 2900 | 2900 | 2900     |
 
----
-
-Let me know if you’d like to:
-
-* Auto-deploy both frontend & backend using Docker
-* Add authentication to the React app using JWT
-* Create a downloadable Postman collection for API testing
-* Add CI/CD pipeline documentation
-
-Want a complete **architecture diagram** too?
