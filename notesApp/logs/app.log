@@ -1,0 +1,7 @@
+[2025-05-20 12:54:32,179] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2025-05-20 13:00:32,519] INFO app.views: Login attempt: naresh@gmail.com
+[2025-05-20 13:00:33,572] INFO app.views: Login successful: naresh@gmail.com
+[2025-05-20 13:00:34,064] INFO app.views: Fetching notes for: naresh@gmail.com
+[2025-05-20 13:00:34,151] INFO app.views: Fetching notes for: naresh@gmail.com
+[2025-05-20 13:00:54,754] INFO app.views: Creating note for: naresh@gmail.com
+[2025-05-20 13:00:54,917] INFO app.views: Note created for: naresh@gmail.com
